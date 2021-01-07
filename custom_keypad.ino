@@ -31,13 +31,29 @@ void setup(){
   Serial.begin(9600);
   digitalWrite(LED_BUILTIN, LOW);
 }
+
+int x = 0;
   
-void loop(){
-  char customKey = customKeypad.getKey();
-  
-  if (customKey){
-    Serial.println(customKey);
-  }
+void loop()
+  {
+    char customKey = customKeypad.getKey();
+   
+    if (customKey == '6')
+    {
+      x = 1;
+      Serial.println("\n*");
+    }
+
+    while(x == 1)
+    {
+      char customKey2 = customKeypad.getKey();
+      if (customKey2 == '5')
+      {
+        Serial.println("\nPassword Correct\n");
+        x = 0;
+      }
+    }
+    x = 0;
   }
 
 
